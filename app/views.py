@@ -12,13 +12,6 @@ from rest_framework import generics
 from rest_framework import filters
 
 
-class RobotList(generics.ListCreateAPIView):
-    queryset = UserPasswordManager.objects.all()
-    serializer_class = UserPasswordSerializer
-    name = 'user_password'
-    filter_fields = ['application_type']
-
-
 class UserPasswordView(generics.ListAPIView):
     search_fields = ['name']
     filter_backends = (filters.SearchFilter,)
