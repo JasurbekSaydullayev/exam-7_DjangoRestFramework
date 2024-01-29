@@ -50,8 +50,10 @@ def add_items(request):
 
 @api_view(['GET'])
 def view_items(request):
-    if request.query_params:
-        items = UserPasswordManager.objects.filter(**request.query_params.dict())
+    filter_params = {key: value for key, value in request.query_params.items() if key.startswith('filter_')}
+
+    if filter_params:
+        items = UserPasswordManager.objects.filter(**filter_params)
     else:
         items = UserPasswordManager.objects.all()
 
