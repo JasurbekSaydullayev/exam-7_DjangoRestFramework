@@ -1,13 +1,9 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.response import Response
 from .models import UserPasswordManager
 from .serializers import UserPasswordSerializer
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view
 from rest_framework import serializers, status
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import filters
 
@@ -25,7 +21,7 @@ def ApiOverview(request):
     api_urls = {
         'all_items': '/',
         'Search by name': '/?name=name',
-        'Filter by application': '/?application=application_type',
+        'Filter by application': '/?application_type=application_type',
         'Add': '/create',
         'Update': '/update/pk',
         'Delete': '/delete/pk/delete',
